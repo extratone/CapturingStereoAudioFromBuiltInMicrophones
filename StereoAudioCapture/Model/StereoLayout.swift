@@ -23,10 +23,10 @@ enum StereoLayout: String {
     
     init(orientation: AVAudioSession.Orientation, stereoOrientation: AVAudioSession.StereoOrientation) {
         
-        let front = AVAudioSession.Location.orientationFront.rawValue
-        let back = AVAudioSession.Location.orientationBack.rawValue
+        let front: AVAudioSession.Orientation = .front
+        let back: AVAudioSession.Orientation = .back
         
-        switch (orientation.rawValue, stereoOrientation) {
+        switch (orientation, stereoOrientation) {
             
             // Front
             case (front, .none):

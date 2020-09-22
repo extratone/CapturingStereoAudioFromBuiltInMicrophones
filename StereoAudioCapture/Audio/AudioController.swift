@@ -7,6 +7,7 @@ The object that controls and configures the app's audio behavior.
 
 import Foundation
 import AVFoundation
+import CoreGraphics
 
 protocol AudioControllerDelegate: AnyObject {
     func audioControllerDidStopPlaying()
@@ -52,9 +53,9 @@ class AudioController: NSObject, StereoLevelsProvider {
     
     static var recordingOptions: [RecordingOption] = {
         // Names of the required data sources.
-        let front = AVAudioSession.Location.orientationFront.rawValue
-        let back = AVAudioSession.Location.orientationBack.rawValue
-        let bottom = AVAudioSession.Location.orientationBottom.rawValue
+        let front = AVAudioSession.Orientation.front.rawValue
+        let back = AVAudioSession.Orientation.back.rawValue
+        let bottom = AVAudioSession.Orientation.bottom.rawValue
 
         let session = AVAudioSession.sharedInstance()
         guard let dataSources = session.preferredInput?.dataSources else { return [] }

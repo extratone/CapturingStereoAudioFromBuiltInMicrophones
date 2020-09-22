@@ -9,10 +9,12 @@ Because a user can hold an iOS device in a variety of ways, you need to specify 
 - Polar pattern. The system represents the individual device microphones, and beamformers that use multiple microphones, as data sources. Select the front or back data source and set its polar pattern to stereo.
 - Input orientation. When recording video, set the input orientation to match the video orientation. When recording audio only, set the input orientation to match the user interface orientation. In both cases, don’t change the orientation during recording.
 
-This sample app shows how to configure your app to record stereo audio, and helps you visualize changes to the input orientation and data-source selection.
+This sample app shows how to configure your app to record stereo audio, and helps you visualize changes to the input orientation and data-source selection. 
+
+- Note: You must run the sample on a supported physical device running iOS 14, or later. To determine whether a device supports stereo recording, query the audio session’s selected data source to see if its [supportedPolarPatterns][1] array contains the [stereo][2] polar pattern.
 
 ## Configure the Audio Session Category
-Recording stereo audio requires the app’s audio session to use either the [record][1] or [playAndRecord][2] category. The sample uses the `playAndRecord` category so it can do both. It also passes the `defaultToSpeaker` and `allowBluetooth` options to route the audio to the speaker instead of the receiver, and to Bluetooth headphones.
+Recording stereo audio requires the app’s audio session to use either the [record][3] or [playAndRecord][4] category. The sample uses the `playAndRecord` category so it can do both. It also passes the `defaultToSpeaker` and `allowBluetooth` options to route the audio to the speaker instead of the receiver, and to Bluetooth headphones.
 
 ``` swift
 func setupAudioSession() {
@@ -25,7 +27,7 @@ func setupAudioSession() {
     }
 }
 ```
-[View in Source](x-source-tag://SetupAudioSession)
+[View in Source][5]
 
 
 ## Select and Configure a Built-In Microphone
@@ -51,7 +53,7 @@ private func enableBuiltInMic() {
     }
 }
 ```
-[View in Source](x-source-tag://EnableBuiltInMic)
+[View in Source][6]
 
 ## Configure the Microphone Input’s Directionality
 To configure the microphone input’s directionality, the sample sets its data source’s preferred polar pattern and the session’s input orientation. It performs this configuration in its `selectRecordingOption(_:orientation)`  method, which it calls whenever the user rotates the device or changes the recording option selection.
@@ -95,9 +97,14 @@ func selectRecordingOption(_ option: RecordingOption, orientation: Orientation, 
                             stereoOrientation: session.inputOrientation))
 }
 ```
-[View in Source](x-source-tag://SelectDataSource)
+[View in Source][7]
 
 This method finds the data source with the selected name, sets its preferred polar pattern to stereo, and then sets it as the input’s preferred data source. Finally, it sets the preferred input orientation to match the device’s user interface orientation.
 
-[1]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/category/1616451-record
-[2]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/category/1616568-playandrecord
+[1]:	https://developer.apple.com/documentation/avfoundation/avaudiosessiondatasourcedescription/1616450-supportedpolarpatterns "A link to the data source  supportedPolarPatterns property documentation."
+[2]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/polarpattern/3551726-stereo "A link to the stereo polar pattern reference documentaiton."
+[3]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/category/1616451-record
+[4]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/category/1616568-playandrecord
+[5]:	x-source-tag://SetupAudioSession
+[6]:	x-source-tag://EnableBuiltInMic
+[7]:	x-source-tag://SelectDataSource
