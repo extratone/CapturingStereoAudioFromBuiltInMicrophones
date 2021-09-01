@@ -52,23 +52,22 @@ class AudioController: NSObject, StereoLevelsProvider {
     }
     
     static var recordingOptions: [RecordingOption] = {
-        // Names of the required data sources.
-        let front = AVAudioSession.Orientation.front.rawValue
-        let back = AVAudioSession.Orientation.back.rawValue
-        let bottom = AVAudioSession.Orientation.bottom.rawValue
+        let front = AVAudioSession.Orientation.front
+        let back = AVAudioSession.Orientation.back
+        let bottom = AVAudioSession.Orientation.bottom
 
         let session = AVAudioSession.sharedInstance()
         guard let dataSources = session.preferredInput?.dataSources else { return [] }
         
         var options = [RecordingOption]()
         dataSources.forEach { dataSource in
-            switch dataSource.dataSourceName {
+            switch dataSource.orientation {
                 case front:
-                    options.append(RecordingOption(name: "Front Stereo", dataSourceName: front))
+                    options.append(RecordingOption(name: "Front Stereo", dataSourceName: front.rawValue))
                 case back:
-                    options.append(RecordingOption(name: "Back Stereo", dataSourceName: back))
+                    options.append(RecordingOption(name: "Back Stereo", dataSourceName: back.rawValue))
                 case bottom:
-                    options.append(RecordingOption(name: "Mono", dataSourceName: bottom))
+                    options.append(RecordingOption(name: "Mono", dataSourceName: bottom.rawValue))
                 default: ()
             }
         }

@@ -101,10 +101,10 @@ func selectRecordingOption(_ option: RecordingOption, orientation: Orientation, 
 
 This method finds the data source with the selected name, sets its preferred polar pattern to stereo, and then sets it as the input’s preferred data source. Finally, it sets the preferred input orientation to match the device’s user interface orientation.
 
-[1]:	https://developer.apple.com/documentation/avfoundation/avaudiosessiondatasourcedescription/1616450-supportedpolarpatterns "A link to the data source  supportedPolarPatterns property documentation."
-[2]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/polarpattern/3551726-stereo "A link to the stereo polar pattern reference documentaiton."
-[3]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/category/1616451-record
-[4]:	https://developer.apple.com/documentation/avfoundation/avaudiosession/category/1616568-playandrecord
+[1]:	https://developer.apple.com/documentation/avfaudio/avaudiosessiondatasourcedescription/1616450-supportedpolarpatterns "A link to the data source  supportedPolarPatterns property documentation."
+[2]:	https://developer.apple.com/documentation/avfaudio/avaudiosession/polarpattern/3551726-stereo "A link to the stereo polar pattern reference documentaiton."
+[3]:	https://developer.apple.com/documentation/avfaudio/avaudiosession/category/1616451-record
+[4]:	https://developer.apple.com/documentation/avfaudio/avaudiosession/category/1616568-playandrecord
 [5]:	x-source-tag://SetupAudioSession
 [6]:	x-source-tag://EnableBuiltInMic
 [7]:	x-source-tag://SelectDataSource
