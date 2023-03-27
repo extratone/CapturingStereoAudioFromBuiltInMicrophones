@@ -1,8 +1,8 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+See the LICENSE.txt file for this sample’s licensing information.
 
 Abstract:
-An enum describing the data source's orientation and the session's input orientation.
+An enumeration describing the data source's orientation and the session's input orientation.
 */
 
 import Foundation

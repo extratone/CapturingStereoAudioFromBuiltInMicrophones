@@ -1,5 +1,5 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+See the LICENSE.txt file for this sample’s licensing information.
 
 Abstract:
 The object that controls and configures the app's audio behavior.
@@ -13,7 +13,7 @@ protocol AudioControllerDelegate: AnyObject {
     func audioControllerDidStopPlaying()
 }
 
-// Enum to normalize UIInterfaceOrientation and AVAudioSession.StereoOrientation.
+// The enumeration to normalize UIInterfaceOrientation and AVAudioSession.StereoOrientation.
 enum Orientation: Int {
     case unknown = 0
     case portrait = 1
@@ -23,7 +23,7 @@ enum Orientation: Int {
 }
 
 fileprivate extension Orientation {
-    // Convenience property to retrieve the AVAudioSession.StereoOrientation.
+    // The convenience property to retrieve the AVAudioSession.StereoOrientation.
     var inputOrientation: AVAudioSession.StereoOrientation {
         return AVAudioSession.StereoOrientation(rawValue: rawValue)!
     }
@@ -71,7 +71,7 @@ class AudioController: NSObject, StereoLevelsProvider {
                 default: ()
             }
         }
-        // Sort alphabetically
+        // Sort alphabetically.
         options.sort()
         return options
     }()
@@ -234,7 +234,7 @@ class AudioController: NSObject, StereoLevelsProvider {
             meterable = player
         }
         
-        // Calculate power levels for left and right channels.
+        // Calculate power levels for the left and right channels.
         if let meterable = meterable {
             for i in 0...1 {
                 let avgPower = meterable.averagePower(forChannel: i)
@@ -260,7 +260,7 @@ class AudioController: NSObject, StereoLevelsProvider {
 // MARK: - AudioController Extensions
 extension AudioController: AVAudioRecorderDelegate {
     
-    // AVAudioRecorderDelegate method.
+    // The AVAudioRecorderDelegate method.
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         
         let destURL = FileManager.default.urlInDocumentsDirectory(named: "recording.wav")
@@ -278,7 +278,7 @@ extension AudioController: AVAudioPlayerDelegate {
     }
 }
 
-// Adapter interface for player and recorder.
+// The adapter interface for the player and recorder.
 protocol Meterable {
     func updateMeters()
     func peakPower(forChannel channelNumber: Int) -> Float

@@ -1,8 +1,8 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+See the LICENSE.txt file for this sample’s licensing information.
 
 Abstract:
-A simple Quartz-based audio level meter class.
+A simple quartz-based audio level meter class.
 */
 
 import UIKit
@@ -19,7 +19,7 @@ struct StereoChannelLevels {
                                           right: ChannelLevels(level: 0, peakLevel: 0))
 }
 
-/// Protocol to be adopted by object providing peak and average power levels.
+/// The protocol to adopt for the object that provides peak and average power levels.
 protocol StereoLevelsProvider {
     var levels: StereoChannelLevels { get }
 }
@@ -52,7 +52,7 @@ class StereoLevelMeterView: UIView {
         stackView.pinToSuperviewEdges()
     }
     
-    // Class providing audio meter data needs to adopt StereoLevelsProvider.
+    // The class providing audio meter data needs to adopt StereoLevelsProvider.
     var levelProvider: StereoLevelsProvider? {
         didSet {
             leftChannelMeter.levelProvider = levelProvider
@@ -100,7 +100,7 @@ private class LevelMeterView: UIView {
         
         for ledIndex in 0..<ledCount {
             
-            // Calculate current LED rect
+            // Calculate the current LED rectangle.
             let rectX = bounds.width * (CGFloat(ledIndex) / CGFloat(ledCount))
             let rectY = CGFloat(0)
             let width = bounds.width * (1.0 / CGFloat(ledCount))
@@ -108,15 +108,15 @@ private class LevelMeterView: UIView {
             
             let ledRect = CGRect(x: rectX, y: rectY, width: width, height: height)
             
-            // Create and configure LED layer.
+            // Create and configure the LED layer.
             let ledLayer = CALayer()
-            // Inset slightly so there is some slight space between LEDs
+            // Inset slightly so there's some slight space between LEDs.
             ledLayer.frame = ledRect.insetBy(dx: 0.0, dy: 0.0)
             ledLayer.borderWidth = borderWidth
             ledLayer.borderColor = ledBorderColor.cgColor
             ledLayer.backgroundColor = ledBackgroundColor.cgColor
             
-            // Add layer to layer hierachy/
+            // Add the layer to the layer hierachy.
             layer.addSublayer(ledLayer)
             
             layers.append(ledLayer)
@@ -126,13 +126,13 @@ private class LevelMeterView: UIView {
     }
     
     private let thresholds = [
-        // LED color threshold values
+        // The LED color threshold values.
         ColorThreshold(color: #colorLiteral(red: 0, green: 1, blue: 0, alpha: 1), maxValue: 0.5),
         ColorThreshold(color: #colorLiteral(red: 1, green: 1, blue: 0, alpha: 1), maxValue: 0.8),
         ColorThreshold(color: #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1), maxValue: 1.0)
     ]
     
-    // Class providing audio meter data needs to adopt AudioLevelProvider.
+    // The class providing audio meter data needs to adopt AudioLevelProvider.
     var levelProvider: StereoLevelsProvider?
     
     override init(frame: CGRect) {
@@ -151,7 +151,7 @@ private class LevelMeterView: UIView {
         layer.borderColor = bezelColor.cgColor
     }
     
-    // Updates the LED colors based on the current peak and avg power levels.
+    // Updates the LED colors based on the current peak and average power levels.
     private func updateLEDs() {
         
         var lightMinValue = CGFloat(0)

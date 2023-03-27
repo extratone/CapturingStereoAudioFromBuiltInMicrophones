@@ -1,5 +1,5 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+See the LICENSE.txt file for this sample’s licensing information.
 
 Abstract:
 The app's main view controller.
@@ -25,7 +25,7 @@ class StereoLayoutView: UIView {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        // Configure bezel appearance
+        // Configure the bezel appearance.
         backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         layer.borderColor = UIColor.darkGray.cgColor
         layer.cornerRadius = 8.0
